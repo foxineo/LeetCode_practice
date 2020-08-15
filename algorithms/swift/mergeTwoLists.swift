@@ -57,6 +57,27 @@
         return head
     }
 
+    // 递归算法
+    func mergeTwoLists_recursive(_ l1: ListNode?, _ l2: ListNode?) -> ListNode? {
+        if l1 == nil {
+            return l2
+        }
+        if l2 == nil {
+            return l1
+        }
+        
+        var head: ListNode?
+        if l1!.val > l2!.val{
+            head = l2
+            head?.next = mergeTwoLists(l1, l2?.next)
+        } else {
+            head = l1
+            head?.next = mergeTwoLists(l1?.next, l2)
+        }
+        
+        return head
+    }
+
 
 public class ListNode {
     public var val: Int
